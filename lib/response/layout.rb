@@ -1,5 +1,9 @@
+require "#{File.dirname(__FILE__)}/request"
+
 module Response
   module Layout
+
+    include Request::UserAgent
 
     DEFAULT_MOBILE_NAMESPACE = "mobile"
 
@@ -31,8 +35,8 @@ module Response
       end  
     end
 
-    def default_layout
-      (default_namespace.blank? ? "application.html.erb" : "#{default_namespace}.html.erb")
+    def custom_layout
+      (default_namespace.blank? ? "application" : default_namespace)
     end
 
   end
